@@ -1,5 +1,7 @@
 # GreetingHexJavascript
 
+[![Build Status](https://github.com/adambonsu/GreetingHexJavascript/actions/workflows/ci.yml/badge.svg)](https://github.com/adambonsu/GreetingHexJavascript/actions/workflows/ci.yml)
+
 ## Hexagonal Architecture Overview
 
 Hexagonal Architecture, also known as Ports and Adaptors, is a software design pattern that aims to create loosly coupled application components.
