@@ -1,0 +1,21 @@
+name: CI
+run-name: "CI run by @${{ github.actor }}, event: ${{ github.event_name }}"
+on:
+  push:
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  run-functional-tests:
+    permissions:
+      contents: read
+    uses: ./.github/workflows/functional-tests.yml
+  run-security-tests:
+    uses: ./.github/workflows/security-tests.yml
+  upload-package:
+    permissions:
+      packages: write
+      contents: read
+    needs: [run-functional-tests, run-security-tests]
+    uses: ./.github/workflows/upload-package.yml

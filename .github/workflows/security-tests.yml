@@ -1,0 +1,35 @@
+name: SecurityTests
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  security-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install Dependencies
+        run: npm ci
+      - name: Static Application Security Test (SAST) - Talisman - Detect secrets in commits
+        uses: carhartl/talisman-secrets-scan-action@v1.4.0
+      - name: Security Composition Analysis (SCA) - NPM Audit
+        run: npm audit --json > npm-audit.json
+      - name: Run ESLint security rules
+        run: npm run lint -- -f json -o eslint-results.json
+      - name: Upload NPM Audit Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-audit-report
+          path: npm-audit.json
+      - name: Upload ESLint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-results
+          path: eslint-results.json

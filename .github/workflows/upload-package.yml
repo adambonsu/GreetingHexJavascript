@@ -1,0 +1,27 @@
+name: Upload Package
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  upload-package:
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          registry-url: "https://npm.pkg.github.com/${{ github.repository_owner }}"
+      - name: Install Dependencies
+        run: npm ci
+      - name: Upload package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
