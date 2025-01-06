@@ -3,7 +3,8 @@ class UserInterface {
   constructor() {
     this.greeting = new Greeting();
   }
-  greet(name) {
+  // eslint-disable-next-line no-unused-vars
+  greet(_name) {
     throw new Error("Not implemented");
   }
 }
