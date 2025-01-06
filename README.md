@@ -17,9 +17,31 @@ Benefits of this architecture include:
 - Improved testability
 - Flexibility to change external components without affecting the core logic
 
+## Setup
+
+1. Ensure you have Node.js installed on your system.
+2. Clone this repository:
+
+```
+git clone git@github.com:adambonsu/GreetingHexJavascript.git`
+cd GreetingHexJavascript
+```
+
+3. Install dependencies: `npm install`
+
+## Running the Application
+
+To run the main application: `npm start`.
+To run the tests: `npm test`.
+
 ## Development
 
-After checking out the repo, run `npm start` to execute the `mains.js`.
+- To add new features, create appropriate files in the `src` directory following the hexagonal architecture principles.
+- Add corresponding test files in the `tests` directory.
+- Ensure all tests pass before committing changes.
+
+## Project Structure Explanation
+
 Each file has a single responsibility:
 
 - `greeting.js` contains the core domain logic

@@ -3,7 +3,7 @@ class StringUserInterface extends UserInterface {
   constructor() {
     super();
   }
-  greet(name = "World") {
+  greet(name) {
     return this.greeting.greet(name);
   }
 }

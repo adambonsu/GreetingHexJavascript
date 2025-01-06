@@ -1,6 +1,8 @@
 class Greeting {
+  // if name is not provided, it defaults to "Hello"
   greet(name) {
-    return `Hello ${name}`;
+    const message = name === undefined ? "Hello" : `Hello ${name}`;
+    return message;
   }
 }
 module.exports = Greeting;
