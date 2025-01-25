@@ -1,6 +1,6 @@
 {
   "name": "@adambonsu/greeting-hex-javascript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
@@ -9,9 +9,9 @@
     "url": "git+https://github.com/adambonsu/GreetingHexJavascript.git"
   },
   "type": "module",
-  "main": "src/main.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node src/main.js",
+    "start": "node src/index.js",
     "lint": "eslint .",
     "test": "jest",
     "test:coverage": "jest --coverage",
